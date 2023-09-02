@@ -17,14 +17,14 @@ def send_reply_message(reply_token, message_text):
         )
 
 def send_reply_message_with_resource(reply_token, filename):
-
-    reply_data = cmn.handle_json_file("reply_message_texts", filename)
-
+    data = cmn.handle_json_file("text_messages", filename)
+    print("\n=>\ntext-data: ", data)
+    data_combined_text = ''.join(data["texts"])
     with ApiClient(configuration) as api_client:
         line_bot_api = MessagingApi(api_client)
         line_bot_api.reply_message_with_http_info(
             ReplyMessageRequest(
                 reply_token=reply_token,
-                messages=[TextMessage(text=reply_data["text"])]
+                messages=[TextMessage(text=data_combined_text)]
             )
         )

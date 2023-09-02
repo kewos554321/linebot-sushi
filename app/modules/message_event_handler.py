@@ -22,9 +22,8 @@ def handle_message(event):
         stpm.show_confirm_test(source_id)
     elif msg_text == "ic":
         stpm.show_imagecarousel_test(source_id)
-    elif msg_text == "q":
-        filename = "test.json"
-        stm.send_reply_message_with_resource(reply_token, filename) 
+    elif msg_text == "menu":
+        stpm.show_shushi_menu(source_id)
     elif msg_text == "我想要訂位預約":
         stpm.show_shushi_reservation_step1(source_id)
     elif msg_text == "我想看今日特餐":
@@ -34,7 +33,7 @@ def handle_message(event):
         filename = "test.json"
         stm.send_reply_message_with_resource(reply_token, filename) 
     elif msg_text == "我想知道店鋪位置":
-        slm.test(reply_token)
+        slm.show_location_message(reply_token)
     else:
         stm.send_reply_message(reply_token, "unkown...")
 
