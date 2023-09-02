@@ -1,0 +1,35 @@
+{
+  "type": "template",
+  "altText": "This is a buttons template",
+  "template": {
+    "type": "image_carousel",
+    "columns": [
+      {
+        "imageUrl": "https://drive.google.com/uc?export=view&id=1qguOodVjx2d7kQ8Yw1SKH2KlTw_aMcKk",
+        "action": {
+          "type": "postback",
+          "label": "Buy",
+          "data": "action=buy&itemid=111",
+          "display_text": "Buy"
+        }
+      },
+      {
+        "imageUrl": "https://drive.google.com/uc?export=view&id=1qguOodVjx2d7kQ8Yw1SKH2KlTw_aMcKk",
+        "action": {
+          "type": "message",
+          "label": "Yes",
+          "text": "yes"
+        }
+      },
+      {
+        "imageUrl": "https://drive.google.com/uc?export=view&id=1qguOodVjx2d7kQ8Yw1SKH2KlTw_aMcKk",
+        "action": {
+          "type": "uri",
+          "label": "View detail",
+          "uri": "http://example.com/page/222",
+          "altUri": "http://example.com/page/111"
+        }
+      }
+    ]
+  }
+}
