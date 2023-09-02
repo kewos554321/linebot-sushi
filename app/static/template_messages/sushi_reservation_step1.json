@@ -1,0 +1,39 @@
+{
+  "type": "template",
+  "altText": "Sushi訂位預約",
+  "template": {
+    "type": "buttons",
+    "thumbnailImageUrl": "https://drive.google.com/uc?export=view&id=1qguOodVjx2d7kQ8Yw1SKH2KlTw_aMcKk",
+    "imageAspectRatio": "square",
+    "imageSize": "cover",
+    "imageBackgroundColor": "#FFFFFF",
+    "title": "訂位預約-Step1",
+    "text": "請選擇你預約的日期時間",
+    "defaultAction": {
+      "type": "datetimepicker",
+      "label": "訂位預約日期",
+      "mode": "datetime",
+      "initial": "08:30",
+      "max": "21:00",
+      "min": "09:00",
+      "data": "action=select_datetime"
+    },
+    "actions": [
+      {
+        "type": "datetimepicker",
+        "label": "訂位預約日期", 
+        "mode": "datetime", 
+        "initial": "08:30", 
+        "max": "21:00", 
+        "min": "09:00",
+        "data": "action=select_datetime"
+      },
+      {
+        "type": "postback",
+        "label": "取消訂位流程",
+        "data": "action=select_datetime",
+        "display_text": "..."
+      }
+    ]
+  }
+}

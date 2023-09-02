@@ -1,7 +1,9 @@
 from flask import request, abort
 from app import app, handler
 from linebot.v3.exceptions import InvalidSignatureError
-from app.modules.message_handler import handle_messages
+from app.modules.message_event_handler import handle_message
+from app.modules.postback_event_handler import handle_postback
+from app.modules.join_event_handler import handle_join
 
 @app.route("/callback", methods=['POST'])
 def callback():

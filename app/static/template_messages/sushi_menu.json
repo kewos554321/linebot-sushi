@@ -1,0 +1,40 @@
+{
+  "type": "template",
+  "altText": "Sushi菜單",
+  "template": {
+    "type": "buttons",
+    "thumbnailImageUrl": "https://drive.google.com/uc?export=view&id=1qguOodVjx2d7kQ8Yw1SKH2KlTw_aMcKk",
+    "imageAspectRatio": "rectangle",
+    "imageSize": "cover",
+    "imageBackgroundColor": "#FFFFFF",
+    "title": "歡迎使用Sushi菜單",
+    "text": "請選擇你需要的功能",
+    "defaultAction": {
+      "type": "message",
+      "label": "查看菜單",
+      "text": "我想看菜單"
+    },
+    "actions": [
+      {
+        "type": "message",
+        "label": "訂位預約",
+        "text": "我想要訂位預約"
+      },
+      {
+        "type": "message",
+        "label": "今日特餐",
+        "text": "我想看今日特餐"
+      },
+      {
+        "type": "message",
+        "label": "查看菜單",
+        "text": "我想看菜單"
+      },
+      {
+        "type": "message",
+        "label": "店鋪位置",
+        "text": "我想知道店鋪位置"
+      }
+    ]
+  }
+}

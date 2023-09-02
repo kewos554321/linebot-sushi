@@ -1,0 +1,35 @@
+{
+  "type": "template",
+  "altText": "This is my function menu",
+  "template": {
+    "type": "buttons",
+    "thumbnailImageUrl": "https://drive.google.com/file/d/1qguOodVjx2d7kQ8Yw1SKH2KlTw_aMcKk/view",
+    "imageAspectRatio": "rectangle",
+    "imageSize": "cover",
+    "imageBackgroundColor": "#FFFFFF",
+    "title": "Function Menu: Header",
+    "text": "Please select the following one to show detail",
+    "defaultAction": {
+      "type": "uri",
+      "label": "View detail",
+      "uri": "http://example.com/page/123"
+    },
+    "actions": [
+      {
+        "type": "postback",
+        "label": "怎麼去?",
+        "data": "action=send&message=不知道"
+      },
+      {
+        "type": "uri",
+        "label": "幫我填問卷",
+        "uri": "http://example.com/page/123"
+      },
+      {
+        "type": "message",
+        "label": "顯示進階功能",
+        "text": "gm: 玩遊戲\n "
+      }
+    ]
+  }
+}

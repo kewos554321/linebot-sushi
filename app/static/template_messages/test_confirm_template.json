@@ -1,0 +1,20 @@
+{
+  "type": "template",
+  "altText": "This is a buttons template",
+  "template": {
+    "type": "confirm",
+    "text": "Are you sure?",
+    "actions": [
+      {
+        "type": "message",
+        "label": "Yes",
+        "text": "yes"
+      },
+      {
+        "type": "message",
+        "label": "No",
+        "text": "no"
+      }
+    ]
+  }
+}
