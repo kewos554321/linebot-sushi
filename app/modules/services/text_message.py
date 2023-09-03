@@ -7,7 +7,7 @@ class TextMessageService(AbstractMessageService):
         super().__init__()
 
     def reply_text_message_with_resource(self, reply_token, filename):
-        data = super().common_util.handle_json_file("text_messages", filename)
+        data = self.common_util.handle_json_file("text_messages", filename)
         print("\n=>\ntext-data: ", data)
         data_combined_text = ''.join(data["texts"])
         messages = []

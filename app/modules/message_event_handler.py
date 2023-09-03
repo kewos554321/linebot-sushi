@@ -6,11 +6,12 @@ from .services.location_message import LocationMessageService
 from .services.image_message import ImageMessageService
 from .services.sticker_message import StickerMessageService
 from .services.flex_message import FlexMessageService
+from .services.common_features import CommonFeaturesService
 from .utils import common as cmn
 
 @handler.add(MessageEvent, message=TextMessageContent)
 def handle_message(event):
-    sms, lms, tms, tpms, ims, fms = create_all_service()
+    sms, lms, tms, tpms, ims, fms, cfs = create_all_service()
     print("\nevent=", event)
     src_user_id, src_group_id, msg_text, reply_token = get_event_attr(event, tms)
     source_id = src_user_id if src_group_id is None else src_group_id
@@ -32,6 +33,8 @@ def handle_message(event):
         ims.show_sushi_image_message(reply_token)
     elif msg_text == "y":
         fms.show_carousel_flex_message_test(reply_token)
+    elif msg_text == "u":
+        cfs.show_test_common_message(reply_token)
     elif msg_text == "menu":
         tpms.show_shushi_menu(reply_token)
     elif msg_text == "我想要訂位預約":
@@ -43,7 +46,7 @@ def handle_message(event):
     elif msg_text == "我想知道店鋪位置":
         lms.show_test_location_message(reply_token)
     else:
-        tms.show_unkown(reply_token, "unkown...")
+        tms.show_unkown(reply_token)
 
 def create_all_service():
     lms = LocationMessageService()
@@ -52,7 +55,8 @@ def create_all_service():
     tpms = TemplateMessageService()
     ims = ImageMessageService()
     fms = FlexMessageService()
-    return sms, lms, tms, tpms, ims, fms
+    cfs = CommonFeaturesService()
+    return sms, lms, tms, tpms, ims, fms, cfs
 
 def get_event_attr(event, tms):
     src_user_id = getattr(event.source, 'user_id', None)
