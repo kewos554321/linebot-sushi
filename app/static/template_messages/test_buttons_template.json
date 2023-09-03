@@ -12,23 +12,27 @@
     "defaultAction": {
       "type": "uri",
       "label": "View detail",
-      "uri": "http://example.com/page/123"
+      "uri": "http://example.com/page/123",
+      "altUri": "http://example.com/page/111"
     },
     "actions": [
       {
         "type": "postback",
         "label": "Buy",
-        "data": "action=buy&itemid=123"
+        "data": "action=buy&itemid=123",
+        "display_text": "..."
       },
       {
         "type": "postback",
         "label": "Add to cart",
-        "data": "action=add&itemid=123"
+        "data": "action=add&itemid=123",
+        "display_text": "..."
       },
       {
         "type": "uri",
         "label": "View detail",
-        "uri": "http://example.com/page/123"
+        "uri": "http://example.com/page/123",
+        "altUri": "http://example.com/page/111"
       }
     ]
   }

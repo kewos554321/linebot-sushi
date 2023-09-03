@@ -1,30 +1,32 @@
-from linebot.v3.messaging import Configuration, ApiClient, MessagingApi, ReplyMessageRequest, TextMessage
-from app import configuration
-from ..utils import common as cmn
-def preprocess_message(src_type, msg_text):
-    if src_type == "group" and msg_text.startswith("/"):
-        return msg_text[len("/ "):]
-    return msg_text
+from linebot.v3.messaging import TextMessage
+from .abstract_message import AbstractMessageService
 
-def send_reply_message(reply_token, message_text):
-    with ApiClient(configuration) as api_client:
-        line_bot_api = MessagingApi(api_client)
-        line_bot_api.reply_message_with_http_info(
-            ReplyMessageRequest(
-                reply_token=reply_token,
-                messages=[TextMessage(text=message_text)]
-            )
-        )
+class TextMessageService(AbstractMessageService):
 
-def send_reply_message_with_resource(reply_token, filename):
-    data = cmn.handle_json_file("text_messages", filename)
-    print("\n=>\ntext-data: ", data)
-    data_combined_text = ''.join(data["texts"])
-    with ApiClient(configuration) as api_client:
-        line_bot_api = MessagingApi(api_client)
-        line_bot_api.reply_message_with_http_info(
-            ReplyMessageRequest(
-                reply_token=reply_token,
-                messages=[TextMessage(text=data_combined_text)]
-            )
-        )
+    def __init__(self):
+        super().__init__()
+
+    def reply_text_message_with_resource(self, reply_token, filename):
+        data = super().common_util.handle_json_file("text_messages", filename)
+        print("\n=>\ntext-data: ", data)
+        data_combined_text = ''.join(data["texts"])
+        messages = []
+        messages.append(TextMessage(text=data_combined_text))
+        super().send_reply_message(reply_token, messages)
+
+    def show_test_text_message(self, reply_token):
+        filename = "test_text_message.json"
+        self.reply_text_message_with_resource(reply_token, filename)
+
+    def reply_text_message(self, reply_token, text):
+        messages = []
+        messages.append(TextMessage(text=text))
+        super().send_reply_message(reply_token, messages)
+    
+    def show_unkown(self, reply_token):
+        self.reply_text_message(reply_token, "unkown...")
+
+    def preprocess_message(self, src_type, msg_text):
+        if src_type == "group" and msg_text.startswith("/"):
+            return msg_text[len("/ "):]
+        return msg_text

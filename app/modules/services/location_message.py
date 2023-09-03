@@ -1,21 +1,29 @@
-from linebot.models import LocationMessage
-from app import app
-from linebot import LineBotApi
-from ..utils import common as cmn
+from linebot.v3.messaging import LocationMessage
+from .abstract_message import AbstractMessageService
+    
+class LocationMessageService(AbstractMessageService):
 
-def create_location_message(reply_token, filename):
-    line_bot_api = LineBotApi(app.config['LINE_CHANNEL_ACCESS_TOKEN'])
-    data = cmn.handle_json_file("location_messages", filename)
-    print("\n=>\nlocation-data: ", data)
-    location_msg = LocationMessage(
-        title=data["title"],
-        address=data["address"],
-        latitude=data["latitude"],
-        longitude=data["longitude"]
-    )
+    def __init__(self):
+        super().__init__()
 
-    line_bot_api.reply_message(reply_token, location_msg)
+    def reply_location_message_with_resource(self, reply_token, filename):
+        data = super().common_util.handle_json_file("location_messages", filename)
+        print("\n=>\nlocation-data: ", data)
+        messages = []
+        messages.append(
+            LocationMessage(
+                title=data["title"],
+                address=data["address"],
+                latitude=data["latitude"],
+                longitude=data["longitude"]
+            )
+        )
+        super().send_reply_message(reply_token, messages)
 
-def show_location_message(reply_token):
-    filename = "sushi_location.json"
-    create_location_message(reply_token, filename)
+    def show_test_location_message(self, reply_token):
+        filename = "test_location_message.json"
+        self.reply_location_message_with_resource(reply_token, filename)
+
+    def show_sushi_location_message(self, reply_token):
+        filename = "sushi_location.json"
+        self.reply_location_message_with_resource(reply_token, filename)
