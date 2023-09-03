@@ -9,7 +9,7 @@ class TemplateMessageService(AbstractMessageService):
         self.action_service = ActionService()
 
     def reply_template_message_with_resource(self, reply_token, filename):
-        data = super().common_util.handle_json_file("template_messages", filename)
+        data = self.common_util.handle_json_file("template_messages", filename)
         print("\n=>\ntemplate-data: ", data)
         messages = []
         messages.append(self.create_template_message(data))

@@ -7,7 +7,7 @@ class StickerMessageService(AbstractMessageService):
         super().__init__()
 
     def reply_sticker_message_with_resource(self, reply_token, filename):
-        data = super().common_util.handle_json_file("sticker_messages", filename)
+        data = self.common_util.handle_json_file("sticker_messages", filename)
         print("\n=>\nsticker-data: ", data)
         messages = []
         messages.append(
